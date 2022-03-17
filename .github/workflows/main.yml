@@ -1,4 +1,4 @@
-name: rdepe
+name: Har Pito
 on: workflow_dispatch
 jobs:
   build:
